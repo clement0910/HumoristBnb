@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_134257) do
+ActiveRecord::Schema.define(version: 2021_11_15_145702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.text "content"
+    t.integer "price"
+    t.datetime "start_date"
+    t.datetime "final_date"
+    t.bigint "clients_id"
+    t.bigint "humorists_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["clients_id"], name: "index_bookings_on_clients_id"
+    t.index ["humorists_id"], name: "index_bookings_on_humorists_id"
+  end
 
   create_table "humorists", force: :cascade do |t|
     t.string "name"
@@ -24,10 +37,10 @@ ActiveRecord::Schema.define(version: 2021_11_15_134257) do
     t.string "humor_type"
     t.string "public_target"
     t.integer "price_per_hour"
-    t.bigint "user_id", null: false
+    t.bigint "owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_humorists_on_user_id"
+    t.index ["owner_id"], name: "index_humorists_on_owner_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,9 +51,14 @@ ActiveRecord::Schema.define(version: 2021_11_15_134257) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "humorists", "users"
+  add_foreign_key "bookings", "humorists", column: "humorists_id"
+  add_foreign_key "bookings", "users", column: "clients_id"
+  add_foreign_key "humorists", "users", column: "owner_id"
 end
