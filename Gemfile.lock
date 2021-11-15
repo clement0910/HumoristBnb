@@ -89,6 +89,8 @@ GEM
       sassc (>= 1.11)
     globalid (0.5.2)
       activesupport (>= 5.0)
+    heroicon (0.4.0)
+      rails (>= 5.2)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.3)
@@ -178,6 +180,9 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    simple_form_tailwind_css (0.0.2)
+      heroicon
+      simple_form
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -237,6 +242,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   simple_form
+  simple_form_tailwind_css
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
