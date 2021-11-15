@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_145702) do
+ActiveRecord::Schema.define(version: 2021_11_15_145155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,12 @@ ActiveRecord::Schema.define(version: 2021_11_15_145702) do
     t.integer "price"
     t.datetime "start_date"
     t.datetime "final_date"
-    t.bigint "clients_id"
-    t.bigint "humorists_id"
+    t.bigint "client_id"
+    t.bigint "humorist_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["clients_id"], name: "index_bookings_on_clients_id"
-    t.index ["humorists_id"], name: "index_bookings_on_humorists_id"
+    t.index ["client_id"], name: "index_bookings_on_client_id"
+    t.index ["humorist_id"], name: "index_bookings_on_humorist_id"
   end
 
   create_table "humorists", force: :cascade do |t|
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_11_15_145702) do
     t.string "humor_type"
     t.string "public_target"
     t.integer "price_per_hour"
-    t.bigint "owner_id", null: false
+    t.bigint "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_humorists_on_owner_id"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2021_11_15_145702) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookings", "humorists", column: "humorists_id"
-  add_foreign_key "bookings", "users", column: "clients_id"
+  add_foreign_key "bookings", "humorists"
+  add_foreign_key "bookings", "users", column: "client_id"
   add_foreign_key "humorists", "users", column: "owner_id"
 end

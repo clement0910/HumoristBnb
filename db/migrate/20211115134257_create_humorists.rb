@@ -9,7 +9,7 @@ class CreateHumorists < ActiveRecord::Migration[6.0]
       t.string :humor_type
       t.string :public_target
       t.integer :price_per_hour
-      t.references :user, null: false, foreign_key: true
+      t.references :owner, references: :user, foreign_key: { to_table: :users }
 
       t.timestamps
     end

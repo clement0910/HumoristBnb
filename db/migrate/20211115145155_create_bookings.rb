@@ -5,8 +5,8 @@ class CreateBookings < ActiveRecord::Migration[6.0]
       t.integer :price
       t.datetime :start_date
       t.datetime :final_date
-      t.references :clients, references: :users, foreign_key: { to_table: :users}
-      t.references :humorists, foreign_key: true
+      t.references :client, references: :user , foreign_key: { to_table: :users }
+      t.references :humorist, foreign_key: true
       t.timestamps
     end
   end
