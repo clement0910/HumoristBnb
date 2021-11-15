@@ -2,18 +2,15 @@ class HumoristsController < ApplicationController
   def new
   end
 
-  def show
-  end
-
-  def index
-  end
-
-  def add
+  def create
   end
 
   def destroy
   end
 
   def edit
+  end
+
+  def index
   end
 end

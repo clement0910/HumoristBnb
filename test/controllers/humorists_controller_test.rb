@@ -6,18 +6,8 @@ class HumoristsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get show" do
-    get humorists_show_url
-    assert_response :success
-  end
-
-  test "should get index" do
-    get humorists_index_url
-    assert_response :success
-  end
-
-  test "should get add" do
-    get humorists_add_url
+  test "should get create" do
+    get humorists_create_url
     assert_response :success
   end
 
@@ -28,6 +18,11 @@ class HumoristsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get edit" do
     get humorists_edit_url
+    assert_response :success
+  end
+
+  test "should get index" do
+    get humorists_index_url
     assert_response :success
   end
 
