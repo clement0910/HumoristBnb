@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bookings, only: [ :new, :create, :delete, :edit ]
   resources :humorists, only: [ :new, :create, :delete, :edit ]
   devise_for :users
   root to: 'pages#home'
