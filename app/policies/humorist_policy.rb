@@ -14,10 +14,14 @@ class HumoristPolicy < ApplicationPolicy
   end
 
   def update?
-    record == user
+    record.owner == user
   end
 
   def create?
     true
+  end
+
+  def destroy?
+    record.owner == user
   end
 end

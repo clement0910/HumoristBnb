@@ -1,0 +1,12 @@
+<%= simple_form_for @humorist do |f| %>
+  <%= f.input :name %>
+  <%= f.input :humor_type, :collection => ["Noir", "Enfantin", "Tout Public", "Beauf"] %>
+  <%= f.input :public_target, :collection => ["Enfant", "Ado", "Adulte"] %>
+  <%= f.input :price_per_hour %>
+  <%= f.input :size %>
+  <%= f.input :weight %>
+  <%= f.input :gender %>
+  <%= f.input :age %>
+
+  <%= f.submit %>
+<% end %>
