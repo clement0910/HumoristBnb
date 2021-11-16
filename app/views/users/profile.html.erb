@@ -1,2 +1,23 @@
-<h1>TEST</h1>
-<%= @user.username %>
+<div class="container mx-auto text-center mt-8 xl:px-60">
+  <div class="profile shadow-md rounded text-center">
+    <h3 class="text-4xl font-bold">Votre profil</h3>
+    <table class="mx-auto mt-8 text-lg">
+      <tr class="p-8">
+      <td class="px-8">Pseudo :</td>
+      <td><%= @user.username %></td>
+      </tr>
+      <tr>
+      <td>Prénom :</td>
+      <td><%= @user.first_name %></td>
+      </tr>
+      <tr>
+      <td>Nom :</td>
+      <td><%= @user.last_name %></td>
+      </tr>
+       <tr>
+      <td>Email :</td>
+      <td><%= @user.email %></td>
+      </tr>
+    </table>
+  </div>
+</div>
