@@ -7,7 +7,7 @@
 
     <div class="form-inputs mt-8">
       <%= f.input :username,
-            required: true,
+            required: false,
             input_html: { autocomplete: "username" } %>
       <%= f.input :first_name,
             required: true,
@@ -26,6 +26,7 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
+      <%= f.input :photo, as: :file %>
 
     </div>
 
