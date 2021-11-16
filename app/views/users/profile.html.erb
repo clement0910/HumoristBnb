@@ -1,6 +1,9 @@
 <div class="container mx-auto text-center mt-8 xl:px-60">
   <div class="profile shadow-md rounded text-center">
     <h3 class="text-4xl font-bold">Votre profil</h3>
+    <% unless @user.photo_attachment.nil? %>
+    <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
     <table class="mx-auto mt-8 text-lg">
       <tr class="p-8">
       <td class="px-8">Pseudo :</td>
@@ -22,11 +25,14 @@
   </div>
 
   <div class="grid grid-cols-3 gap-4 text-center mx-auto">
+    <% if @user.humorists.empty? %>
+      <p>comment il va celui la ? bah alors on a pas d'humouriste?</p>
+      <%= link_to 'Ajouter un Humouriste', new_humorist_path %>
+    <% end %>
     <% @user.humorists.each do |humorist| %>
               <div class="max-w-sm w-full sm:w-full lg:w-full py-6 px-3">
                   <div class="bg-white shadow-xl rounded-lg overflow-hidden">
                       <div class="bg-cover bg-center h-56 p-4" style="background-image: url(https://www.gala.fr/imgre/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fgal.2Fvar.2Fgal.2Fstorage.2Fimages.2Fmedia.2Fmultiupload_du_15_juin_2015.2Fmichael-youn.2F3367440-1-fre-FR.2Fmichael-youn.2Ejpg/480x480/quality/80/michael-youn-humoriste-un-metier-a-risque.jpg)">
-
                       </div>
                       <div class="p-4">
                           <p class="uppercase tracking-wide text-sm font-bold text-gray-700"><%= humorist.name %></p>
