@@ -23,24 +23,39 @@
         <ul class="hidden md:flex px-4 mr-32 font-semibold font-heading space-x-12">
           <li><a class="py-2 border-b-2 border-gray-900 hover:border-gray-300 hover:text-gray-300  hover:no-underline" href="#">Accueil</a></li>
           <li><a class="py-2 border-b-2 border-gray-900 hover:border-gray-300 hover:text-gray-300  hover:no-underline" href="#">Catégories</a></li>
-          <li><a class="py-2 border-b-2 border-gray-900 hover:border-gray-300 hover:text-gray-300  hover:no-underline" href="#">Mes réservations</a></li>
-          <li><a class="py-2 border-b-2 border-gray-900 hover:border-gray-300 hover:text-gray-300  hover:no-underline transition-colors" href="#">Contact Us</a></li>
+          <li><a class="py-2 border-b-2 border-gray-900 hover:border-gray-300 hover:text-gray-300  hover:no-underline transition-colors" href="#">Nous contacter</a></li>
         </ul>
           <!-- Sign In / Register      -->
-          <%= link_to new_user_session_path, class: 'flex items-center hover:text-gray-300  hover:no-underline' do %>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-          <% end %>
+          <div x-data="{ dropdownOpen: false }">
+            <button @click="dropdownOpen = !dropdownOpen" class="relative z-10 block rounded-md p-2 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            </button>
+            <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"></div>
+            <div x-show="dropdownOpen" class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
+              <% if user_signed_in? %>
+                <p class="block text-sm text-gray-700 text-center py-2">Hey <span class="font-bold"><%= current_user.username %></span> !</p>
+                <hr>
+                <%= link_to  'Mon profile', new_user_session_path, class: 'block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white hover:no-underline'%>
+                <%= link_to  'Mes réservations', new_user_session_path, class: 'block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white hover:no-underline'%>
+                <%= link_to  'Se déconnecter', destroy_user_session_path, method: 'delete', class: 'block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white hover:no-underline'%>
+              <% else %>
+                <%= link_to  'Se connecter', new_user_session_path, class: 'block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white hover:no-underline'%>
+              <% end %>
+            </div>
+          </div>
       </div>
+
       <!-- Responsive navbar -->
       <a class="navbar-burger self-center mr-12 xl:hidden" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
       </a>
     </nav>
     <%= yield %>
     <%= render 'shared/flashes' %>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   </body>
 </html>
