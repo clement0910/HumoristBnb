@@ -4,5 +4,6 @@ class PagesController < ApplicationController
 
   def home
     @humorists = policy_scope(Humorist)
+    @current_path = 'home'
   end
 end
