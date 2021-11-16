@@ -6,5 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
-# Humorist.create!(name: "clement", humor_type: "Noir", public_target: "Ado", price_per_hour: 10, owner_id: User.last)
+#
+
+Humorist.create!(name: "clement", humor_type: "Noir", public_target: "Adulte", price_per_hour: 100, owner: User.last)
+Booking.create!(price: 150, start_date: DateTime.now, final_date: DateTime.now, client: User.last, humorist: Humorist.last)
+
 
