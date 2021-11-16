@@ -17,10 +17,6 @@ class HumoristPolicy < ApplicationPolicy
     record == user
   end
 
-  def new?
-    true
-  end
-
   def create?
     true
   end
