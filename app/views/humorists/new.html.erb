@@ -1,2 +1,7 @@
-<h1>Humorists#new</h1>
-<p>Find me in app/views/humorists/new.html.erb</p>
+<%= simple_form_for(@humorist) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :humor_type, :collection => ["Noir", "Enfantin", "Tout Public", "Beauf"] %>
+  <%= f.input :public_target, :collection => ["Enfant", "Ado", "Adulte"] %>
+  <%= f.input :price_per_hour %>
+  <%= f.submit %>
+<% end %>
