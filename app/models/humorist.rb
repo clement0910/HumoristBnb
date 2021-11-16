@@ -1,5 +1,6 @@
 class Humorist < ApplicationRecord
   belongs_to :owner, class_name: 'User'
+  has_one_attached :photo
 
   validates :name, presence: true
   validates :humor_type, presence: true, inclusion: { in: ["Noir", "Enfantin", "Tout Public", "Beauf"] }
