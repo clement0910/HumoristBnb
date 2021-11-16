@@ -8,8 +8,10 @@
 #
 #
 Humorist.destroy_all
+User.destroy_all
+User.create!(first_name: "admin", last_name: "admin", email: "admin@admin.fr", password: "admin00", username: "admin")
 Humorist.create!(name: "clement", humor_type: "Noir", public_target: "Adulte", price_per_hour: 100, owner: User.last)
 Humorist.create!(name: "Marc Dutroux", humor_type: "Tout Public", public_target: "Enfant", price_per_hour: 1, gender: "child-friendly", owner: User.last)
-Humorist.create!(name: "Hadolf Hitler", humor_type: "Enfantin", public_target: "Adult", price_per_hour: 1000000, gender: "Envahisseur", owner: User.last)
-Humorist.create!(name: "Tonton Raciste", humor_type: "Beauf", public_target: "Ado", price_per_hour: 5, weight: 325, owner: User.last)
-Booking.create!(price: 150, start_date: DateTime.now, final_date: DateTime.now, client: User.last, humorist: Humorist.last)
+Humorist.create!(name: "Hadolf Hitler", humor_type: "Enfantin", public_target: "Adulte", price_per_hour: 100, gender: "Envahisseur", owner: User.last)
+Humorist.create!(name: "Tonton Raciste", humor_type: "Beauf", public_target: "Ado", price_per_hour: 5, weight: "325", owner: User.last)
+# Booking.create!(price: 150, start_date: DateTime.now, final_date: DateTime.now, client: User.last, humorist: Humorist.last)
