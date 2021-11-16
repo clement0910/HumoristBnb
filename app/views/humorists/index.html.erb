@@ -1,4 +1,5 @@
-<h1><% @humorists.each do |humorist| %></h1>
-  <li><%= humorist.name %></li>
-  <% end %>
-<p>Find me in app/views/humorists/index.html.erb</p>
+<% @humorists.each do |humorist| %>
+  <ul>
+      <li><%= humorist.name %></li>
+  </ul>
+<% end %>
