@@ -56,11 +56,13 @@
                                   <p class="font-bold text-gray-900">Catherine Heffner</p>
                                   <p class="text-sm text-gray-700">(111) 111-1111</p>
                                   <%= link_to 'edit', edit_humorist_path(humorist)%>
-                                  <%= link_to 'delete', humorist_path(humorist), method: delete%>
+                                  <%= link_to 'delete', humorist_path(humorist), method: "delete" %>
                               </div>
                           </div>
                       </div>
                   </div>
           </div>
+      <%= cl_image_tag humorist.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
+  </div>
 </div>
