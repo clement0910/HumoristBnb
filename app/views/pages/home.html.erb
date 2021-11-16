@@ -1,6 +1,9 @@
-<div class="h-96	bg-center bg-auto bg-cover filter-brightness-20" style="background-image: url(https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80)">
+<div class="h-96	bg-center bg-auto bg-cover " style="background-image: url(https://www.fnacspectacles.com/static_lotus/uploads/public/fscom/permanent/stars-stand-up.jpg)">
+  <div class="w-full h-full">
+  </div>
 </div>
-  <div class="-mt-64 ">
+
+  <div class="-mt-64 mb-24 z-20">
     <div class="w-full text-center">
       <p class="text-sm tracking-widest text-white">Plaisir de rire, joie de recevoir</p>
       <h1 class="font-bold text-5xl text-white">
@@ -9,5 +12,25 @@
       <%= link_to "Ajoutez un talent", new_humorist_path, class: 'bg-blue-500 hover:bg-blue-700  mt-8 text-white font-bold py-2 px-4 rounded' %>
   </div>
 </div>
-<div class="container mx-auto">
-</div>
+<div class="wrapper text-center">
+  <h3 class="text-3xl text-gray-900 font-bold">Nos humoristes</h3>
+  <div class="cols mt-8">
+    <% @humorists.first(4).each do |humorist| %>
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(https://unsplash.it/500/500/)">
+						<div class="inner">
+							<p><%= humorist.name %></p>
+              <span>Humour <%= humorist.humor_type %></span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+						  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+      <% end %>
+		</div>
+ </div>
