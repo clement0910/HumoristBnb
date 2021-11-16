@@ -14,10 +14,14 @@ class HumoristPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user  # Only restaurant creator can update it
+    record == user
   end
 
   def new?
-    record.user == user  # Only restaurant creator can update it
+    true
+  end
+
+  def create?
+    true
   end
 end

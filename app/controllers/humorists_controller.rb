@@ -1,15 +1,19 @@
 class HumoristsController < ApplicationController
   def new
     @humorist = Humorist.new
+    @user = current_user
+    authorize @humorist
   end
 
   def create
     @humorist = Humorist.new(params_humorist)
+    @humorist.owner_id = current_user.id
     if @humorist.save
-      redirect_to list_path(@humorist)
+      redirect_to root_path
     else
       render :new
     end
+    authorize @humorist
   end
 
   def show
