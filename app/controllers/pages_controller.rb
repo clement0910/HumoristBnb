@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
 
   def home
+    @humorists = policy_scope(Humorist).all
   end
 end
