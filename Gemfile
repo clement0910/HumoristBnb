@@ -33,6 +33,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'simple_form_tailwind_css'
 gem 'devise'
+gem 'pundit'
 
 group :development, :test do
   gem 'pry-byebug'
