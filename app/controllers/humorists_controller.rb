@@ -30,7 +30,7 @@ class HumoristsController < ApplicationController
   end
 
   def index
-    @humorists = policy_scope(Humorist).all
+    @humorists = policy_scope(Humorist)
   end
 
   private
