@@ -5,9 +5,4 @@ class UsersController < ApplicationController
     authorize @user
   end
 
-  def humorists
-    @user = current_user
-    @humorists = @user.humorists
-    authorize @user
-  end
 end
