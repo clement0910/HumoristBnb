@@ -47,7 +47,6 @@ class HumoristsController < ApplicationController
   private
 
   def params_humorist
-    params.require(:humorist).permit(:name, :size, :weight, :gender, :age, :humor_type, :public_target,
-                                     :price_per_hour, :photo)
+    params.require(:humorist).permit(:name, :size, :weight, :address, :gender, :age, :humor_type, :public_target,
   end
 end
