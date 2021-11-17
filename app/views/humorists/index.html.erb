@@ -1,6 +1,6 @@
 <% @humorists.each do |humorist| %>
   <ul>
-      <li><%= humorist.name , humorist_path(humorist) %></li>
+      <li><%= link_to humorist.name , humorist_path(humorist) %></li>
   </ul>
 <% end %>
 
