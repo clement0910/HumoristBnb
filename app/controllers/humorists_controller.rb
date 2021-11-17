@@ -18,6 +18,7 @@ class HumoristsController < ApplicationController
 
   def show
     @humorist = Humorist.find(params[:id])
+    authorize @humorist
   end
 
   def destroy
@@ -46,7 +47,7 @@ class HumoristsController < ApplicationController
   private
 
   def params_humorist
-    params.require(:humorist).permit(:name, :size, :weight, :gender, :age, :humor_type, :public_target, 
+    params.require(:humorist).permit(:name, :size, :weight, :gender, :age, :humor_type, :public_target,
                                      :price_per_hour, :photo)
   end
 end
