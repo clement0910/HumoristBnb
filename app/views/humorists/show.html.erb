@@ -14,20 +14,23 @@
     </ul>
   </div>
   <div class="shadow-md p-12 rounded mt-8 w-full flex-1">
+        <%= simple_form_for [@humorist, @booking] do |f| %>
+          <%= f.input :content%>
+          <%= f.input :start_date %>
+          <%= f.input :final_date %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
   </div>
-</div>
-
-<h1><%= @humorist.name %></h1>
-<h2> Informations </h2>
-<h3>
-  <ul>
-    <li>Type d'humour: <%= @humorist.humor_type %><li>
-    <li>Public cible: <%= @humorist.public_target %><li>
-    <li>Prix: <%= @humorist.price_per_hour%>€/h<li>
-    <% if @humorist.gender != nil %> <li>Genre: <%= @humorist.gender %><li><% end %>
-    <% if @humorist.weight != nil %> <li>Poids: <%= @humorist.weight %>kg<li><% end %>
-    <% if @humorist.age != nil %> <li>Age: <%= @humorist.age %> ans<li><% end %>
-    <% if @humorist.size != nil %> <li>Taille: <%= @humorist.size %>cm<li><%end%>
-    <% if @humorist.address != nil %> <li>Adresse: <%= @humorist.address %><li><%end%>
-  </ul>
-</h3>
+<%
+=begin%>
+ </div>
+      t.text :content
+      t.integer :price
+      t.datetime :start_date
+      t.datetime :final_date
+      t.references :client, references: :user , foreign_key: { to_table: :users }
+      t.references :humorist, foreign_key: true
+      t.timestamps
+<%
+=end%>
