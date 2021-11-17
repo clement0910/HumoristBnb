@@ -1,29 +1,21 @@
-<div class="container mx-auto text-center mt-8 xl:px-60">
-  <div class="profile shadow-md rounded text-center">
-    <h3 class="text-4xl font-bold">Votre profil</h3>
+<div class="container mx-auto text-center mt-8 xl:px-60 mb-2">
+  <div class="flex space-around pb-6 profile shadow-md rounded text-center">
+    <h3 class="flex-auto text-4xl font-bold ml-6 mr-6">Votre profil</h3>
     <% unless @user.photo_attachment.nil? %>
     <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
-    <table class="mx-auto mt-8 text-lg">
-      <tr class="p-8">
-      <td class="px-8">Pseudo :</td>
-      <td><%= @user.username %></td>
-      </tr>
-      <tr>
-      <td>Prénom :</td>
-      <td><%= @user.first_name %></td>
-      </tr>
-      <tr>
-      <td>Nom :</td>
-      <td><%= @user.last_name %></td>
-      </tr>
-       <tr>
-      <td>Email :</td>
-      <td><%= @user.email %></td>
-      </tr>
-    </table>
+    <div class="flex-auto text-left ml-24 mt-6 text-lg p-1">
+    <h2 class="text-2x1 font-bold mb-6">Vos informations :</h2>
+    <ul>
+      <li><strong>Pseudo : </strong><%= @user.username %><li>
+      <li><strong>Prénom : </strong><%= @user.first_name %></li>
+      <li><strong>Nom :    </strong><%= @user.last_name %></li>
+      <li><strong>Email :  </strong><%= @user.email %></li>
+    </ul>
+    </div>
   </div>
 
+<h3 class="flex-auto text-4xl font-bold mt-6 mb-6">Vos humoristes</h3>
   <div class="grid grid-cols-3 gap-4 text-center mx-auto">
     <% if @user.humorists.empty? %>
       <div class="max-w-sm w-full sm:w-full lg:w-full py-6 px-3 col-start-2 col-cols-3">
