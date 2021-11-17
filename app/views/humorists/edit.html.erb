@@ -1,3 +1,6 @@
+<h2 class="text-5xl font-extrabold text-center mt-2">Modifiez vos informations</h2>
+<div class="container mt-4">
+  <div class="form-container bg-white xl:mx-64 sm:mx-12 p-12 rounded-xl">
 <%= simple_form_for @humorist do |f| %>
   <%= f.input :name %>
   <%= f.input :humor_type, :collection => ["Noir", "Enfantin", "Tout Public", "Beauf"] %>
@@ -7,6 +10,9 @@
   <%= f.input :weight %>
   <%= f.input :gender %>
   <%= f.input :age %>
-
-  <%= f.submit %>
+    <div class="text-center w-full mt-4">
+      <%= f.button :submit, "Ajoutez vos modifications", class: 'justify-items-start md:justify-items-center py-2 px-4 border-2 text-white-500 bg-white border-indigo-500 hover:bg-indigo-500 hover:text-orange font-bold text-center rounded-lg'%>
+    </div>
+  </div>
+</div>
 <% end %>

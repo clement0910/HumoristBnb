@@ -1,19 +1,23 @@
-<div class="container mx-auto text-center mt-8 xl:px-60 mb-2 shadow">
-  <div class="flex space-around pb-6 profile shadow-md rounded text-center">
-    <h3 class="flex-auto text-4xl font-bold ml-6 mr-6 mt-6">Votre profil</h3>
-    <% unless @user.photo_attachment.nil? %>
-    <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-    <div class="flex-auto text-left ml-24 mt-6 text-lg p-1">
-    <h2 class="text-2x1 font-bold mb-6 mt-6">Vos informations :</h2>
-    <ul>
-      <li><strong>Pseudo : </strong><%= @user.username %><li>
-      <li><strong>Prénom : </strong><%= @user.first_name %></li>
-      <li><strong>Nom :    </strong><%= @user.last_name %></li>
-      <li><strong>Email :  </strong><%= @user.email %></li>
-    </ul>
-    </div>
+<div class="w-full mx-auto text-center xl:px-60 shadow">
+
+  <div class="profile shadow-md rounded-xl text-center p-2 mt-6">
+    <h3 class="text-4xl font-bold ml-6 mr-6 mt-6">Votre profil</h3>
+      <div class="flex content-center ml-24">
+        <%= cl_image_tag @user.photo.key, :transformation=>
+        [{:height=>300, :width=>300},
+        {:width=>300, :crop=>"scale"}] %>
+      <div class="flex content-center text-left ml-60 mt-12 text-lg p-1">
+          <ul>
+            <li class="text-3x1 font-bold text-left text-center mb-6">Vos informations :<li>
+            <li><strong>Pseudo : </strong><%= @user.username %><li>
+            <li><strong>Prénom : </strong><%= @user.first_name %></li>
+            <li><strong>Nom :    </strong><%= @user.last_name %></li>
+            <li><strong>Email :  </strong><%= @user.email %></li>
+          </ul>
+          </div>
+      </div>
   </div>
+
 
 <div class="w-full p-6 mx-auto">
     <div class="shadow-md rounded bg-white overflow-hidden relative">
@@ -122,4 +126,5 @@
        <%#= cl_image_tag humorist.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
   </div>
+</div>
 </div>
