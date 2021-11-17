@@ -14,9 +14,11 @@ class User < ApplicationRecord
 
   def set_default_value
     self.username = "#{first_name.downcase}-#{last_name.first.downcase}" if username.empty?
-    photo&.attach(io: File.open(Rails.root.join('app', 'assets', 'images',
-                                                'default-image.png')), filename: 'default-image.png',
-                  content_type: 'image/png')
+    unless photo.attached?
+      photo&.attach(io: File.open(Rails.root.join('app', 'assets', 'images',
+                                                  'default-image.png')), filename: 'default-image.png',
+                    content_type: 'image/png')
+    end
   end
 
   def update_name!
