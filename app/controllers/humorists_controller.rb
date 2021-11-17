@@ -1,4 +1,15 @@
 class HumoristsController < ApplicationController
+
+  def index
+    @humorists = policy_scope(Humorist)
+    @markers = @humorists.geocoded.map do |humorist|
+      {
+        lat: humorist.latitude,
+        lng: humorist.longitude
+      }
+    end
+  end
+
   def new
     @humorist = Humorist.new
     @user = current_user
@@ -40,9 +51,7 @@ class HumoristsController < ApplicationController
     redirect_to '/users/profile', notice: "#{@humorist.name} has been updated"
   end
 
-  def index
-    @humorists = policy_scope(Humorist)
-  end
+
 
   private
 
