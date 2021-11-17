@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :humorists, only: [ :new, :create, :destroy, :edit, :index, :update ] do
+  resources :humorists, only: [ :new, :create, :destroy, :edit, :index, :update, :show ] do
     resources :bookings, only: [ :new, :create, :destroy, :edit, :update]
   end
   devise_for :users

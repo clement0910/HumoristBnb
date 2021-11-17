@@ -1,0 +1,9 @@
+<h1><%= @humorist.name %></h1>
+<h2> Informations </h2>
+<h3>
+  <ul>
+    <li>Type d'humour: <%= @humorist.humor_type %><li>
+    <li>Public cible: <%= @humorist.public_target %><li>
+    <li>Prix de l'heure: <%= @humorist.price_per_hour%><li>
+    <% if @humorist.gender != nil %> <li>Genre: <%= @humorist.gender %><li><% end %>
+    <% if @humorist.weight != nil %> <li>Poids: <%= @humorist.weight %><li><% end %>
