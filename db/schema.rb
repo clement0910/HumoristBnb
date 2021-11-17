@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 2021_11_16_215453) do
     t.integer "price"
     t.datetime "start_date"
     t.datetime "final_date"
-    t.bigint "client_id"
-    t.bigint "humorist_id"
+    t.bigint "clients_id"
+    t.bigint "humorists_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["client_id"], name: "index_bookings_on_client_id"
-    t.index ["humorist_id"], name: "index_bookings_on_humorist_id"
+    t.index ["clients_id"], name: "index_bookings_on_clients_id"
+    t.index ["humorists_id"], name: "index_bookings_on_humorists_id"
   end
 
   create_table "humorists", force: :cascade do |t|
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_215453) do
     t.string "humor_type"
     t.string "public_target"
     t.integer "price_per_hour"
-    t.bigint "owner_id"
+    t.bigint "owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_humorists_on_owner_id"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_215453) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bookings", "humorists"
-  add_foreign_key "bookings", "users", column: "client_id"
+  add_foreign_key "bookings", "humorists", column: "humorists_id"
+  add_foreign_key "bookings", "users", column: "clients_id"
   add_foreign_key "humorists", "users", column: "owner_id"
 end
