@@ -1,2 +1,19 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-inputs mt-8">
+    <%= f.input :email,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "email" },
+                placeholder: 'john.doe@bnb.com'%>
+    <%= f.input :password,
+                required: false,
+                input_html: { autocomplete: "current-password" },
+                :label => "Mot de passe",
+                placeholder: 'password'%>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Se connecter", class: 'py-2 px-4 border-2 text-indigo-500 bg-white border-indigo-500 hover:bg-indigo-500 hover:text-white font-bold text-center rounded-lg'%>
+  </div>
+<% end %>
