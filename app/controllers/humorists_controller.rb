@@ -29,6 +29,7 @@ class HumoristsController < ApplicationController
 
   def show
     @humorist = Humorist.find(params[:id])
+    @booking = Booking.new
     authorize @humorist
   end
 
