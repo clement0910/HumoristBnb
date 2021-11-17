@@ -24,4 +24,8 @@ class HumoristPolicy < ApplicationPolicy
   def destroy?
     record.owner == user
   end
+
+  def categories?
+    true
+  end
 end

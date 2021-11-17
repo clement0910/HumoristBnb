@@ -52,7 +52,11 @@ class HumoristsController < ApplicationController
     redirect_to '/users/profile', notice: "#{@humorist.name} has been updated"
   end
 
-
+  def categories
+    @humorists = policy_scope(Humorist)
+    
+    authorize @humorists
+  end
 
   private
 
