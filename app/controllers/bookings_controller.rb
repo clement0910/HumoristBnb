@@ -1,14 +1,13 @@
 class BookingsController < ApplicationController
   def create
+    @humorist = Humorist.find(params[:humorist_id])
     @booking = Booking.new(params_booking)
-    @booking.start_date = DateTime.strptime(params[:start], '%m/%d/%Y')
-    @booking.client_id = current_user.id
-    @booking.final_date = DateTime.strptime(params[:end], '%m/%d/%Y')
-    @booking.humorist_id = params[:humorist_id]
-    @booking.price = @booking.humorist.price_per_hour * ((@booking.final_date - @booking.start_date) / 60 / 60 / 24)
+    @booking.client = current_user
+    @booking.humorist = @humorist
     authorize @booking
-    if @booking.save
-      redirect_to root_path
+    if @booking.save!
+      flash[:notice] = "resa ok"
+      redirect_to humorist_path(@humorist)
     else
       render :new
     end
@@ -28,6 +27,6 @@ class BookingsController < ApplicationController
   private
 
   def params_booking
-    params.require(:booking).permit(:content, :price, :start_date, :final_date)
+    params.require(:booking).permit(:content, :price, :starts_at, :ends_at)
   end
 end
