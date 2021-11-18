@@ -37,7 +37,7 @@
   </span>
 </div>
   <div class="cols mt-8">
-    <% @humorists.first(4).each do |humorist| %>
+    <% @humorists.first(8).each do |humorist| %>
 			<div class="col" ontouchstart="this.classList.toggle('hover');">
 				<div class="container">
 					<div class="front" style="background-image: url('<%= cl_image_path humorist.photo.key, crop: :fill if humorist.photo.attached? %>')">
