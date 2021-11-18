@@ -1,5 +1,5 @@
-<div class="flex space-between">
-  <div class="flex-1">
+<div class="grid grid-cols-2">
+  <div class="">
     <% @humorists.each do |humorist| %>
       <%= link_to humorist_path(humorist) do %>
         <div class="w-full flex items-center content-center bg-gray-800 rounded-lg border shadow-lg pb-6">
@@ -22,9 +22,9 @@
       <% end %>
     <% end %>
   </div>
-  <div class="flex-1">
+  <div class="">
     <div id="map"
-      style="width: 100%; height: 89vh; position:fixed;"
+      style="width: 50vw; height: 87vh; position:fixed;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
