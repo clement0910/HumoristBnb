@@ -21,7 +21,7 @@ class HumoristsController < ApplicationController
     @humorist.owner_id = current_user.id
     authorize @humorist
     if @humorist.save
-      redirect_to root_path
+      redirect_to users_profile_path
     else
       render :new
     end
@@ -54,7 +54,7 @@ class HumoristsController < ApplicationController
 
   def categories
     @humorists = policy_scope(Humorist)
-    
+
     authorize @humorists
   end
 
