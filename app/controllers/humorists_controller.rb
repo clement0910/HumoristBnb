@@ -10,7 +10,7 @@ class HumoristsController < ApplicationController
     if params[:humor_type].present?
       @humorists = @humorists.where(humor_type: params[:humor_type])
     end
-    if params[:humor_type].present?
+    if params[:public_target].present?
       @humorists = @humorists.where(public_target: params[:public_target])
     end
     @markers = @humorists.geocoded.map do |humorist|
