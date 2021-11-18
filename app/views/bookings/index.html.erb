@@ -6,7 +6,7 @@
       <div class="bg-white border border-white shadow-lg  rounded-3xl p-4 m-4">
         <div class="flex-none sm:flex">
           <div class=" relative h-32 w-32   sm:mb-0 mb-3">
-            <img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="" class=" w-32 h-32 object-cover rounded-2xl">
+            <%= cl_image_tag booking.humorist.photo.key, :transformation=> [{:height=>400, :width=>400, crop: :fill, :radius=>"max" }] if booking.humorist.photo.attached? %>
           </div>
           <div class="flex-auto sm:ml-5 justify-evenly">
             <div class="flex items-center justify-between sm:mt-2">
@@ -43,6 +43,6 @@
       </div>
     </div>
   </div>
-  </div>
   <% end %>
+  </div>
 </div>
