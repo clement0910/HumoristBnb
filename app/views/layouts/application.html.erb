@@ -38,29 +38,6 @@
           <% end %>
         </div>
         <% end %>
-        <%
-=begin%>
- <%= simple_form_for :query, method: :get,
-                                  defaults: { wrapper_html: { class: "mr-3" },
-                                              required: false },
-                                  html: { class: 'flex h-10' } do |f| %>
-        <%= f.input :query, label: false,
-                            input_html: { name: 'query',
-                                          placeholder: "Find a movie",
-                                          value: params.dig(:query) },
-                                          html: { class: 'h-full' } %>
-        <%= f.input :director_id, label:         false,
-                                  include_blank: 'Choose director',
-                                  selected:      params[:director_id],
-                                  input_html:    { name: :director_id } %>
-        <%= f.input :category, label:         false,
-                               include_blank: 'Choose category',
-                               selected:      params[:category],
-                               input_html:    { name: :category }%>
-        <%= f.submit "Chercher", class: "px-2 h-10 bg-transparent border-2 border-indigo-500 text-indigo-500 text-lg rounded-lg transition-colors duration-200 transform hover:bg-indigo-500 hover:text-gray-100 focus:border-4 focus:border-indigo-300" %>
-      <% end %>
-<%e
-=end%>
           <!-- Sign In / Register      -->
           <div x-data="{ dropdownOpen: false }">
             <button @click="dropdownOpen = !dropdownOpen" class="relative z-10 block rounded-md p-2 focus:outline-none rounded">
