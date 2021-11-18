@@ -11,7 +11,7 @@ Humorist.destroy_all
 User.destroy_all
 User.create!(first_name: "admin", last_name: "admin", email: "admin@admin.fr", password: "admin00", username: "admin")
 Humorist.create!(name: "Coluche", humor_type: "Tout Public", public_target: "Adulte", price_per_hour: 100, address: "Paris", gender: "Homme", age: 77, owner: User.last)
-Humorist.create!(name: "Anne Roumanoff", humor_type: "Tout Public", public_target: "Adultes", price_per_hour: 20, address: "Lyon", gender: "Femme", age: 56, owner: User.last)
+Humorist.create!(name: "Anne Roumanoff", humor_type: "Tout Public", public_target: "Adulte", price_per_hour: 20, address: "Lyon", gender: "Femme", age: 56, owner: User.last)
 Humorist.create!(name: "Gaspard Proust", humor_type: "Noir", public_target: "Adulte", price_per_hour: 25, address: "Marseille", gender: "Homme", age: 45, owner: User.last)
 Humorist.create!(name: "Kev Adams", humor_type: "Tout Public", public_target: "Enfant", price_per_hour: 5, address: "Toulouse", gender: "Homme", age: 30, owner: User.last)
 Humorist.create!(name: "Blanche Gardin", humor_type: "Tout Public", public_target: "Adulte", price_per_hour: 54, address: "Nantes", gender: "Femme", age: 44, owner: User.last)
