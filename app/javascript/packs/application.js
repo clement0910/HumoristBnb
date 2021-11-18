@@ -26,8 +26,11 @@ import "stylesheets/application";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+
 import { initMapbox } from '../plugins/init_mapbox';
+import { initDatepicker } from '../plugins/init_datepicker'
 
 document.addEventListener('turbolinks:load', () => {
     initMapbox();
+    initDatepicker();
 });

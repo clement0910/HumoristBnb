@@ -1,7 +1,7 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(client_id: user.id)
     end
   end
 
@@ -9,7 +9,11 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
-  def new?
+  def destroy?
+    record.client == user
+  end
+
+  def index?
     true
   end
 end

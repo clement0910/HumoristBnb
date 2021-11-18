@@ -49,7 +49,7 @@
                 <p class="block text-sm text-gray-700 text-center py-2">Hey <span class="font-bold"><%= current_user.first_name %></span> !</p>
                 <hr>
                 <%= link_to  'Mon profil', users_profile_path, class: 'block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white hover:no-underline'%>
-                <%= link_to  'Mes réservations', new_user_session_path, class: 'block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white hover:no-underline'%>
+                <%= link_to  'Mes réservations', users_bookings_path, class: 'block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white hover:no-underline'%>
                 <%= link_to  'Se déconnecter', destroy_user_session_path, method: 'delete', class: 'block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white hover:no-underline'%>
               <% else %>
                 <%= link_to  'Se connecter', new_user_session_path, class: 'block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white hover:no-underline'%>
