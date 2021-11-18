@@ -3,7 +3,7 @@
     <% @humorists.each do |humorist| %>
       <div class="w-full flex justify-center items-center content-center bg-gray-800 rounded-lg border shadow-lg pb-6">
         <div class="p-4">
-          <img src="https://source.unsplash.com/nqEJ548Hqjs/800x600" alt="image" class="w-64 object-cover object-center">
+          <%= cl_image_tag humorist.photo.key, height: 300, width: 300, crop: :fill %>
         </div>
         <div class="p-4 align-center">
           <p class="work-sans font-semibold text-xl text-white"><%= humorist.name %></p>
