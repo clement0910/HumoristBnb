@@ -55,13 +55,7 @@ class HumoristsController < ApplicationController
     @humorist.update(params_humorist)
     redirect_to '/users/profile', notice: "#{@humorist.name} has been updated"
   end
-​
-  def categories
-    @humorists = policy_scope(Humorist)
-​
-    authorize @humorists
-  end
-​
+
   private
 ​
   def params_humorist

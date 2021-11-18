@@ -985,6 +985,11 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@popperjs/core@^2.9.3":
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"
+  integrity sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ==
+
 "@rails/actioncable@^6.0.0":
   version "6.1.4"
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.1.4.tgz#c3c5a9f8302c429af9722b6c50ab48049016d2a3"
@@ -1045,6 +1050,19 @@
     webpack-assets-manifest "^3.1.1"
     webpack-cli "^3.3.10"
     webpack-sources "^1.4.3"
+
+"@themesberg/flowbite@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@themesberg/flowbite/-/flowbite-1.1.1.tgz#b5d00fa8b372d4765898c7e0cc497cee679fdbef"
+  integrity sha512-2VwqRMqtwf7wJybvAkaULqr/x7X8Ake9wkSIACJwcxGr9jzsTuEvuDoX+HBzgbgOAAt1qpw2FWAlARCVSCKI5g==
+  dependencies:
+    "@popperjs/core" "^2.9.3"
+    mini-svg-data-uri "^1.4.3"
+
+"@themesberg/tailwind-datepicker@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@themesberg/tailwind-datepicker/-/tailwind-datepicker-1.0.1.tgz#985237a951e5e2096f40c3ee8948ae62d6659892"
+  integrity sha512-kP4B7yDx2YU4POnbdq5pl90i7NH7gArGWudb/HecMtuzprUwm7CU7T8j3dn8nX32SoJ26lrTl2hnd+en7BdxaA==
 
 "@types/glob@^7.1.1":
   version "7.2.0"
@@ -5033,6 +5051,11 @@ mini-css-extract-plugin@^0.8.0:
     normalize-url "1.9.1"
     schema-utils "^1.0.0"
     webpack-sources "^1.1.0"
+
+mini-svg-data-uri@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/mini-svg-data-uri/-/mini-svg-data-uri-1.4.3.tgz#43177b2e93766ba338931a3e2a84a3dfd3a222b8"
+  integrity sha512-gSfqpMRC8IxghvMcxzzmMnWpXAChSA+vy4cia33RgerMS8Fex95akUyQZPbxJJmeBGiGmK7n/1OpUX8ksRjIdA==
 
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"
