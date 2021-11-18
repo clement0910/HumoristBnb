@@ -1,8 +1,6 @@
 <div class="container mx-auto">
-<h1 class="text-4x1 font-bold mt-4 font-sans"><%= @humorist.name %></h1>
-
-<div class="grid grid-cols-2 gap-3 shadow p-4 mr-48 ml-48 ">
-
+<h1 class="text-4x1 font-bold mt-4 mr-48 ml-48  border-1 rounded-full font-sans"><%= @humorist.name %></h1>
+<div class="bg-white grid grid-cols-2 gap-3 shadow-xl p-4 mr-48 ml-48 border-1 rounded-20x1">
     <div class="grid span-1">
       <div class="ml-40">
         <% if @humorist.photo.attached? %>
@@ -25,8 +23,7 @@
     </div>
   </div>
 </div>
-
-  <div class="grid grid-cols-2 gap-3 shadow p-3 mt-6 mr-48 ml-48 mt-12 mb-10">
+  <div class="bg-white grid grid-cols-2 gap-3 shadow-xl p-3 mt-6 mr-48 ml-48 mt-12 mb-10 border-1">
     <h1 class="text-2x-1 font-bold text-center mr-12 mt-10 font-sans">Réservez une prestation</h1>
     <%= simple_form_for [@humorist, @booking], method: 'post' do |f| %>
       <%= f.input :content, label: "Détails", placeholder: "Je veux qu'il ou elle se cache dans les buissons." %>
