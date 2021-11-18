@@ -23,6 +23,7 @@ class HumoristsController < ApplicationController
   def create
     @humorist = Humorist.new(params_humorist)
     @humorist.owner_id = current_user.id
+    @humorist.photo.attach(params[:photo])
     authorize @humorist
     if @humorist.save
       redirect_to users_profile_path
@@ -59,6 +60,6 @@ class HumoristsController < ApplicationController
   private
 
   def params_humorist
-    params.require(:humorist).permit(:name, :size, :weight, :address, :gender, :age, :humor_type, :public_target, :price_per_hour)
+    params.require(:humorist).permit(:name, :size, :weight, :address, :gender, :age, :humor_type, :public_target, :price_per_hour, :photo)
   end
 end
