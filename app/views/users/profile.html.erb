@@ -5,7 +5,7 @@
       <div class="flex content-center ml-24">
         <%= cl_image_tag @user.photo.key, :transformation=>
         [{:height=>300, :width=>300},
-        {:width=>300, :crop=>"scale"}] %>
+        {:width=>300, :crop=>"scale", :radius=>"max"}] %>
       <div class="flex content-center text-left ml-60 mt-12 text-lg p-1">
           <ul>
             <li class="text-3x1 font-bold text-left text-center mb-6">Vos informations :<li>
