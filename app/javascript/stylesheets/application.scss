@@ -3,3 +3,10 @@
 @import "tailwindcss/utilities";
 @import "components/cards.scss";
 
+.loop-animation:hover  {
+  svg{
+    transform: scale(1.4);
+    box-shadow: 0.2rem 0.2rem 1rem 1rem rgb(255, 255, 255);
+    transition: 0.4s;
+  }
+}
