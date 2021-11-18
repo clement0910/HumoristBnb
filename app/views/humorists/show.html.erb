@@ -1,5 +1,32 @@
-<div class="container flex mx-auto">
-  <div class="shadow-md p-12 rounded mt-8 w-full flex-1">
+<h1 class="text-4x1 font-bold mt-4"><%= @humorist.name %></h1>
+
+<div class="grid grid-cols-2 gap-3 shadow p-4 mr-48 ml-48 ">
+
+    <div class="grid span-1">
+      <div class="ml-40">
+        <% if @humorist.photo.attached? %>
+          <%= cl_image_tag(@humorist.photo.key, :transformation=>[
+            { :width => 250, :height => 250, :crop => "fill", :radius => "max" }])  %>
+        <% end %>
+      </div>
+    </div>
+    <div class="grid span-2 font-medium text-2x1 mt-10 ml-24 p-3">
+      <ul>
+        <% if @humorist.gender != nil %> <li>Genre : <%= @humorist.gender %><li><% end %>
+        <% if @humorist.weight != nil %> <li>Poids : <%= @humorist.weight %><li><% end %>
+        <% if @humorist.age != nil %> <li>Age : <%= @humorist.age %><li><% end %>
+        <% if @humorist.size != nil %> <li>Taille : <%= @humorist.size %><li><% end %>
+        <% if @humorist.address != nil %> <li>Addresse : <%= @humorist.address %><li><% end %>
+        <li>Type d'humour : <%= @humorist.humor_type %><li>
+        <li>Public cible : <%= @humorist.public_target %><li>
+        <li>Prix pour une journée de prestation : <%= @humorist.price_per_hour%>€<li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <div class="grid grid-cols-2 gap-3 shadow p-3 mt-6 mr-48 ml-48 mt-12 mb-10">
+    <h1 class="text-2x-1 font-bold text-center mr-12 mt-10">Réservez une prestation</h1>
     <%= simple_form_for [@humorist, @booking], method: 'post' do |f| %>
       <%= f.input :content %>
       <div id="dateRangePickerId" class="flex items-center">
@@ -19,23 +46,8 @@
                          class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 datepicker-input" %>
         </div>
       </div>
-      <%= f.submit %>
+      <%= f.button :submit, class: "mt-5 my-2 bg-blue-500 hover:bg-blue-700 text-white font-bold text-sm py-2 px-4 rounded justify-items-start md:justify-items-center py-2 px-4 border-2 text-white-500 bg-white border-indigo-500 hover:bg-indigo-500 hover:text-orange font-bold text-center rounded-lg" %>
     <% end %>
   </div>
-
-  <div class="shadow-md p-12 rounded mt-8 flex-1">
-  <h3 class="text-4xl capitalize"><%= @humorist.name %></h3>
-    <ul>
-      <li>Type d'humour: <%= @humorist.humor_type %><li>
-      <li>Public cible: <%= @humorist.public_target %><li>
-      <li>Prix de l'heure: <%= @humorist.price_per_hour%><li>
-      <% if @humorist.gender != nil %> <li>Genre: <%= @humorist.gender %><li><% end %>
-      <% if @humorist.weight != nil %> <li>Poids: <%= @humorist.weight %><li><% end %>
-      <% if @humorist.age != nil %> <li>Age: <%= @humorist.age %><li><% end %>
-      <% if @humorist.size != nil %> <li>Taille: <%= @humorist.size %><li><% end %>
-      <% if @humorist.address != nil %> <li>Address: <%= @humorist.address %><li><% end %>
-    </ul>
   </div>
 </div>
-<%= console %>
-
