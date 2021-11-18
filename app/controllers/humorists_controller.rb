@@ -1,11 +1,17 @@
 class HumoristsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @humorists = policy_scope(Humorist)
+    @humorists = Humorist.all
     if params[:query].present?
-      @humorists.search_by_name_and_humor_type_and_public_target(params[:query])
-    else
-      @humorists = Humorist.all
+      sql_query = "name ILIKE :query"
+      @humorists = @humorists.where(sql_query, query: "%#{params[:query]}%")
+    end
+    if params[:humor_type].present?
+      @humorists = @humorists.where(humor_type: params[:humor_type])
+    end
+    if params[:public_target].present?
+      @humorists = @humorists.where(public_target: params[:public_target])
     end
     @markers = @humorists.geocoded.map do |humorist|
       {
@@ -13,6 +19,7 @@ class HumoristsController < ApplicationController
         lng: humorist.longitude
       }
     end
+    @current_path = 'humorists'
   end
 
   def new

@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_many :bookings, foreign_key: 'client_id'
   has_many :humorists, foreign_key: 'owner_id'
+
   has_one_attached :photo
 
   def set_default_value

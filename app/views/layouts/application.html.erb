@@ -19,11 +19,13 @@
           Humorist Bnb.
         <% end %>
         <!-- SearchBar -->
+        <% if @current_path == 'humorists' %>
         <div class="relative bg-white rounded-xl -m">
           <%= form_for :query, method: :get, class: 'flex ' do |f| %>
-            <%= f.text_field :query, placeholder: 'Search', class: 'mb-2 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none text-gray-900 focus:bg-gray-200'  %>
-            <%= f.text_field :humor_type, placeholder: "Type d'humour", class: 'bg-white h-10 px-5 pr-12 rounded-lg text-sm focus:outline-none text-gray-900 -ml-5 focus:bg-gray-200' %>
-            <%= f.text_field :public_target, placeholder: 'Public', class: 'bg-white h-10 px-5 pr-12 rounded-lg text-sm focus:outline-none focus:bg-gray-200 text-gray-900 -ml-5 focus:bg-gray-200' %>
+            <%= f.text_field :query, name: 'query', placeholder: "Find a movie", value: params.dig(:query) ,
+             placeholder: 'Search', class: 'mb-2 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none text-gray-900 focus:bg-gray-200'  %>
+            <%= f.select(:humor_type, Humorist.distinct.pluck(:humor_type), {:include_blank => "Choisis le style d'humour"}, {:name => 'humor_type', :class => 'bg-white h-10 px-5 pr-12 rounded-lg text-sm focus:outline-none text-gray-900 -ml-5 focus:bg-gray-200' })%>
+            <%= f.select(:public_target, Humorist.distinct.pluck(:public_target), {:include_blank => 'Choisis le public visé'}, {:name => 'public_target', :class => 'bg-white h-10 px-5 pr-12 rounded-lg text-sm focus:outline-none text-gray-900 -ml-5 focus:bg-gray-200' })%>
             <%= f.button :button, type: :submit, class: 'p-5' do %>
               <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -35,36 +37,13 @@
             <% end %>
           <% end %>
         </div>
-
-        <%
-=begin%>
- <%= simple_form_for :query, method: :get,
-                                  defaults: { wrapper_html: { class: "mr-3" },
-                                              required: false },
-                                  html: { class: 'flex h-10' } do |f| %>
-        <%= f.input :query, label: false,
-                            input_html: { name: 'query',
-                                          placeholder: "Find a movie",
-                                          value: params.dig(:query) },
-                                          html: { class: 'h-full' } %>
-        <%= f.input :director_id, label:         false,
-                                  include_blank: 'Choose director',
-                                  selected:      params[:director_id],
-                                  input_html:    { name: :director_id } %>
-        <%= f.input :category, label:         false,
-                               include_blank: 'Choose category',
-                               selected:      params[:category],
-                               input_html:    { name: :category }%>
-        <%= f.submit "Chercher", class: "px-2 h-10 bg-transparent border-2 border-indigo-500 text-indigo-500 text-lg rounded-lg transition-colors duration-200 transform hover:bg-indigo-500 hover:text-gray-100 focus:border-4 focus:border-indigo-300" %>
-      <% end %>
-<%
-=end%>
+        <% end %>
           <!-- Sign In / Register      -->
           <div x-data="{ dropdownOpen: false }">
             <button @click="dropdownOpen = !dropdownOpen" class="relative z-10 block rounded-md p-2 focus:outline-none rounded">
             <% if user_signed_in? %>
-              <div class="h-8 w-8 rounded-full object-center"
-                   style="background-size: contain; background-image: url('<%= cl_image_path(current_user.photo.key)%>')">
+             <div class="h-8 w-8 rounded-full object-center"
+                    style="background-size: contain; background-image: url('<%= cl_image_path(current_user.photo.key)%>')">
               </div>
             <% else %>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
