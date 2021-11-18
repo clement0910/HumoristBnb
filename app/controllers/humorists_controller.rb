@@ -1,4 +1,5 @@
 class HumoristsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   def index
     @humorists = policy_scope(Humorist)
     if params[:query].present?

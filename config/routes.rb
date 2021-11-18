@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get "humorists/categories", to: "humorists#categories", as: :categories
   resources :humorists, only: [ :new, :create, :destroy, :edit, :index, :update, :show ] do
     resources :bookings, only: [:create]
   end
+  resources :bookings, only: [:destroy]
   get "users/bookings", to: "bookings#index"
   devise_for :users
   get "users/profile", to: "users#profile"

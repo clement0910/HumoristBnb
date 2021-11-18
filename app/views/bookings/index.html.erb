@@ -2,4 +2,5 @@
 <p>Find me in app/views/bookings/index.html.erb</p>
 <% @bookings.each do |booking| %>
   <p><%= booking.price %></p>
+  <%= link_to 'delete', booking_path(booking), method: 'delete' %>
 <% end %>
