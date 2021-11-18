@@ -1,15 +1,25 @@
 <div class="flex space-between">
   <div class="flex-1">
     <% @humorists.each do |humorist| %>
-      <div class="w-full flex justify-center items-center content-center bg-gray-800 rounded-lg border shadow-lg pb-6">
-        <div class="p-4">
-          <%= cl_image_tag humorist.photo.key, height: 300, width: 300, crop: :fill %>
+      <%= link_to humorist_path(humorist) do %>
+        <div class="w-full flex items-center content-center bg-gray-800 rounded-lg border shadow-lg pb-6">
+          <div class="mt-4 ml-8">
+            <%= cl_image_tag humorist.photo.key, height: 120, width: 120, crop: :fill %>
+          </div>
+          <div class="p-4 align-center">
+            <p class="work-sans font-semibold text-xl text-white"><%= humorist.name %></p>
+            <div class="info flex divide-x">
+              <p class="raleway text-sm my-4 text-white opacity-75 mr-4">Type d'humour : <%= humorist.humor_type %></p>
+              <p class="raleway text-sm my-4 text-white opacity-75 px-4">Public : <%= humorist.public_target %></p>
+              <p class="raleway text-sm my-4 text-white opacity-75 px-4">Prix au jour : <%= humorist.price_per_hour %>€</p>
+            </div>
+            <div class="flex mx-auto items-center">
+              <%= cl_image_tag User.find(humorist.owner_id).photo.key, height: 30, width: 30, crop: :fill %>
+              <p class="text-white opacity-75 ml-4"><%= User.find(humorist.owner_id).username %></p>
+            </div>
+          </div>
         </div>
-        <div class="p-4 align-center">
-          <p class="work-sans font-semibold text-xl text-white"><%= humorist.name %></p>
-          <p class="raleway text-sm my-4 text-white opacity-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem fuga odit repellendus vero iure alias accusamus ex sed facilis magni aperiam dicta obcaecati, possimus rerum, consequuntur deserunt aut dolor ipsa.</p>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
   <div class="flex-1">
