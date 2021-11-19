@@ -31,7 +31,9 @@
         </div>
       </div>
   </div>
-<h3 class="flex-auto text-4xl font-bold mt-6">Vos humoristes</h3>
+  <% unless @user.humorists.empty? %>
+  <h3 class="flex-auto text-4xl font-bold mt-6">Vos humoristes</h3>
+  <% end %>
   <div class="grid grid-cols-3">
     <% @user.humorists.each do |humorist| %>
               <div class="grid grid-span-1 max-w-sm py-6 px-3">
