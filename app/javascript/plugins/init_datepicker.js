@@ -4,9 +4,11 @@ const initDatepicker = () => {
     // const datepickerEl = document.getElementById('datepickerId');
     // new Datepicker(datepickerEl, {});
     const dateRangePickerEl = document.getElementById('dateRangePickerId');
-    new DateRangePicker(dateRangePickerEl, {
-        // options
-    });
+    if (dateRangePickerEl) {
+        new DateRangePicker(dateRangePickerEl, {
+            // options
+        });
+    }
 };
 
 
