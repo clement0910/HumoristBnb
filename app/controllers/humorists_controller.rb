@@ -28,7 +28,7 @@ class HumoristsController < ApplicationController
     @humorist.owner_id = current_user.id
     authorize @humorist
     if @humorist.save
-      redirect_to users_profile_path
+      redirect_to humorist_path(@humorist)
     else
       render :new
     end
@@ -56,7 +56,7 @@ class HumoristsController < ApplicationController
     @humorist = Humorist.find(params[:id])
     authorize @humorist
     @humorist.update(params_humorist)
-    redirect_to '/users/profile', notice: "#{@humorist.name} has been updated"
+    redirect_to humorist_path(@humorist), notice: "#{@humorist.name} has been updated"
   end
 
   private

@@ -6,8 +6,7 @@ class BookingsController < ApplicationController
     @booking.humorist = @humorist
     authorize @booking
     if @booking.save!
-      flash[:notice] = "resa ok"
-      redirect_to humorist_path(@humorist)
+      redirect_to users_bookings_path, notice: "Réservation de #{@booking.humorist.name} effectué."
     else
       render :new
     end
@@ -17,7 +16,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking
     @booking.destroy
-    redirect_to '/users/profile', notice: "Your booking has been deleted"
+    redirect_to '/users/profile' , notice: "Your booking has been deleted"
   end
 
   def index
