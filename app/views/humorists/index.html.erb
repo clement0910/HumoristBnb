@@ -15,7 +15,9 @@
               <p class="raleway text-sm my-4 text-white opacity-75 px-4">Prix au jour : <%= humorist.price_per_hour %>€</p>
             </div>
             <div class="flex mx-auto items-center">
-              <%= cl_image_tag User.find(humorist.owner_id).photo.key, height: 30, width: 30, crop: :fill %>
+              <div class="h-8 w-8 rounded-full object-center"
+                    style="background-size: contain; background-image: url('<%= cl_image_path(humorist.owner.photo.key)%>')">
+              </div>
               <p class="text-white opacity-75 ml-4"><%= User.find(humorist.owner_id).username %></p>
             </div>
           </div>
