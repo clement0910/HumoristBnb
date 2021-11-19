@@ -2,17 +2,12 @@ class HumoristsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @humorists = policy_scope(Humorist)
-    @humorists = Humorist.all
     if params[:query].present?
       sql_query = "name ILIKE :query"
       @humorists = @humorists.where(sql_query, query: "%#{params[:query]}%")
     end
-    if params[:humor_type].present?
-      @humorists = @humorists.where(humor_type: params[:humor_type])
-    end
-    if params[:public_target].present?
-      @humorists = @humorists.where(public_target: params[:public_target])
-    end
+    @humorists = @humorists.where(humor_type: params[:humor_type]) if params[:humor_type].present?
+    @humorists = @humorists.where(public_target: params[:public_target]) if params[:public_target].present?
     @markers = @humorists.geocoded.map do |humorist|
       {
         lat: humorist.latitude,
@@ -31,7 +26,6 @@ class HumoristsController < ApplicationController
   def create
     @humorist = Humorist.new(params_humorist)
     @humorist.owner_id = current_user.id
-    @humorist.photo.attach(params[:photo])
     authorize @humorist
     if @humorist.save
       redirect_to users_profile_path
