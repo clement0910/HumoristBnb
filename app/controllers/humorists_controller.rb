@@ -11,7 +11,8 @@ class HumoristsController < ApplicationController
     @markers = @humorists.geocoded.map do |humorist|
       {
         lat: humorist.latitude,
-        lng: humorist.longitude
+        lng: humorist.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { humorist: humorist })
       }
     end
     @current_path = 'humorists'
@@ -28,7 +29,7 @@ class HumoristsController < ApplicationController
     @humorist.owner_id = current_user.id
     authorize @humorist
     if @humorist.save
-      redirect_to humorist_path(@humorist)
+      redirect_to humorist_path(@humorist), notice: "La page de #{@humorist.name} à été crée."
     else
       render :new
     end
@@ -44,7 +45,7 @@ class HumoristsController < ApplicationController
     @humorist = Humorist.find(params[:id])
     authorize @humorist
     @humorist.destroy
-    redirect_to '/users/profile', notice: "Your humorist has been deleted"
+    redirect_to '/users/profile', notice: "Humouriste supprimé."
   end
 
   def edit
@@ -56,7 +57,7 @@ class HumoristsController < ApplicationController
     @humorist = Humorist.find(params[:id])
     authorize @humorist
     @humorist.update(params_humorist)
-    redirect_to humorist_path(@humorist), notice: "#{@humorist.name} has been updated"
+    redirect_to humorist_path(@humorist), notice: "La page de #{@humorist.name} à été mise à jour."
   end
 
   private
