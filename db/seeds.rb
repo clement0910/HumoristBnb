@@ -12,7 +12,8 @@ require "open-uri"
 Humorist.destroy_all
 User.destroy_all
 Booking.destroy_all
-User.create!(first_name: "Copy", last_name: "Comic", email: "admin@admin.fr", password: "admin00", username: "CopyComic")
+file = URI.open('https://www.kp-skills.com/assets/jean-romain_krupa-2c953a2da4ffdaa14ed9185359d49aca9769a8baee551a7b36768c2afa34688f.jpg')
+User.create!(first_name: "Copy", last_name: "Comic", email: "admin@admin.fr", password: "admin00", username: "CopyComic").photo.attach(io: file, filename: 'Jeanro.jpg', content_type: 'image/jng')
 file = URI.open('https://cdn.radiofrance.fr/s3/cruiser-production/2021/01/00920a64-382d-45c8-982b-fe098e80bf5f/1136_076_chl_021166.jpg')
 Humorist.create!(name: "Coluche", humor_type: "Tout Public", public_target: "Adulte", price_per_hour: 100, address: "Paris", gender: "Homme", age: 77, owner: User.last).photo.attach(io: file, filename: 'coluche.jpg', content_type: 'image/png')
 file = URI.open('https://www.moka-mag.com/media/cache/event_detail_main_picture/2020/10/4451-anne-roumanof.jpg')
